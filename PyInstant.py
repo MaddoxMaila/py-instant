@@ -1,5 +1,7 @@
 from typing import Type
-from redis import ConnectionPool
+from redis import ConnectionPool, Redis
+
+from Exceptions import MissingSSLCert
 
 # PyInstant Will Implement The Singleton Design Pattern
 # To Better Handle Connections To Redis
@@ -22,5 +24,7 @@ class PyInstant:
             PyInstant()
         return PyInstant.__instance
 
-    def connect(self, ) -> None:
+    def create_connection(self, host: str, port: int, db: int = 0, ssl: bool = False, ssl_ca_certs: str = None) -> None:
         pass
+
+
