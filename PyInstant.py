@@ -1,6 +1,4 @@
 from typing import Type
-from redis import ConnectionPool, Redis
-
 from .Exceptions import SingletonException
 from Connection import Connection
 
