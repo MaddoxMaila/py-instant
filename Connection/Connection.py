@@ -38,6 +38,8 @@ class Connection:
         
         try:
             self.redis_connection = Redis(connection_pool=self.redis_pool_connection)
+            return Connection.get_instance()
+            
         except ConnectionError as ce:
             print(ce)
         
