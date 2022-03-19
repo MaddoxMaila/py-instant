@@ -1,5 +1,0 @@
-
-
-
-class ChannelTypeException(Exception):
-    pass

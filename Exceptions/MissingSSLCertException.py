@@ -1,2 +1,0 @@
-class MissingSSLCertException(Exception):
-    pass
