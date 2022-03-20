@@ -1,4 +1,4 @@
-from ...Exceptions import SingletonException
+from ...Exceptions import SingletonException, UnregisteredChannelException
 from ...Connection import Connection
 
 class Subscriber(Connection):
@@ -25,6 +25,13 @@ class Subscriber(Connection):
 
     def add_channels(self, channel_names: list) -> None:
         (self.add_channel(channel_name=channel_name) for channel_name in  channel_names)
+    
+    def get_available_channels(self) -> list:
+        return super().get_instance().get_redis_connection().pubsub_channels()
 
     def channels_exists(self, channel_name: str or list) -> bool:
-        pass
+        for registered_channel in self.get_available_channels():
+            if channel_name == registered_channel:
+                return True
+        return False 
+
