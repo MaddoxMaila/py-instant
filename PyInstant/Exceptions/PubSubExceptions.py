@@ -1,0 +1,2 @@
+class UnregisteredChannelException(Exception):
+    pass
