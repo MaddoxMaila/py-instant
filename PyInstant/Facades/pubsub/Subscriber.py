@@ -21,7 +21,7 @@ class Subscriber(Connection):
         return Subscriber.__instance
 
     def add_channel(self, channel_name: str) -> None:
-        self.pub_sub.subscribe(channel_name)
+        self.pub_sub.psubscribe(channel_name)
 
     def add_channels(self, channel_names: list) -> None:
         (self.add_channel(channel_name=channel_name) for channel_name in  channel_names)
@@ -33,5 +33,9 @@ class Subscriber(Connection):
         for registered_channel in self.get_available_channels():
             if channel_name == registered_channel:
                 return True
-        return False 
+        return False
+
+    def get_data(self):
+        print(self.pub_sub.get_message())
+        return self.pub_sub.get_message() 
 

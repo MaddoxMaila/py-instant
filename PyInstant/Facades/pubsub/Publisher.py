@@ -22,6 +22,3 @@ class Publisher(Connection):
     
     def emit(self, channel_name: str, data):
         super().get_instance().get_redis_connection().publish(channel_name, data)
-
-    def get_data(self):
-        return self.pub_sub.get_message()
